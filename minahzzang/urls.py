@@ -24,5 +24,6 @@ urlpatterns = [
     path('listsch', chulgun.views.listsch, name='listsch'),
     path('oncreate', chulgun.views.oncreate, name='oncreate'),
     path('logout', chulgun.views.logout, name='logout'),
+    path('delete/<int:chul_id>', chulgun.views.delete, name='delete'),
 
 ]

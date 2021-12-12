@@ -1,7 +1,7 @@
 import datetime
 from datetime import time
 from datetime import date
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from .models import SchMst
 from django.contrib.auth.models import User
@@ -55,7 +55,7 @@ def listsch(reqeust):
     else :
         isTodayOnWork = 1
 
-    schlist = SchMst.objects.all()
+    schlist = SchMst.objects.all().order_by('-date')
 
     return render(reqeust, 'workOn.html', {'schlist' : schlist, 'isTodayOnWork' : isTodayOnWork})
 
@@ -84,3 +84,10 @@ def oncreate(request):
         return redirect(listsch)
 
     
+@login_required(login_url = '/')
+def delete(request, chul_id):
+    chul = get_object_or_404(SchMst, pk = chul_id)
+    chul.delete()
+
+    messages.info(request, '삭제 완료 ! 주의 깊게 하시라구요 ! ')
+    return redirect(listsch)
