@@ -1,0 +1,1 @@
+web: gunicorn minahzzang.wsgi --log-file -

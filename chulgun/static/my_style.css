@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Dokrip';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Dokrip.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+header {
+    text-align: center;
+    padding-top: 30px;
+  }
+
+.dokrip{
+    font-family: 'Dokrip';
+}
+
+
+.cb{
+    color : black;
+}
+
+.naljja{
+    font-family: 'Margarine',cursive;
+    padding:20px;
+}
+
+.nae{
+    font-family: 'Nanum Gothic', cursive;
+    padding:20px;
+}
+
+.cre{
+    float:right;
+    font-family: 'Black Han Sans', sans-serif;
+    color:black;
+}
+
+.gothic{
+    font-family: 'Nanum Gothic', cursive;
+}
+
+.aright{
+    float:right;
+}

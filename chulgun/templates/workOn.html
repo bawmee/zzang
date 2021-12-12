@@ -1,0 +1,67 @@
+
+{% extends 'base.html' %}
+{% block content%}
+
+{% load static %}
+
+<header>
+    <h1 class="dokrip">우민아 출근 일지</h1>
+    {% if user.is_authenticated %}
+    로그인 아이디 {{ user.username }} &nbsp; <a href="{% url 'logout' %}" >로그아웃</a>
+    {% endif %}
+</header>
+
+
+
+{% if user.is_authenticated %}
+    <center>
+    {% if user.username == 'ggangpark' %}
+        {%if isTodayOnWork == 0%}
+        <form method="POST" action="{% url 'oncreate' %}" id="frm">
+            {% csrf_token %}
+            <a href="javascript:subfrm();"><img src="{% static 'chce.PNG' %}" width="150px" height="150px"/></a>
+        </form>
+        {%else%}
+        <img src="{% static 'him.jpg' %}" width="150px" height="150px"/></a>
+        {%endif%}
+    {% endif %}
+
+</center>                             
+{% endif %}
+<br>
+
+{% if messages %}
+	{% for message in messages %}
+    <div class="alert alert-danger">
+        <strong>저기요 ! </strong> {{ message.message }}
+      </div>
+	{% endfor %}
+{% endif %}
+
+<br>
+
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in schlist%}
+            <tr>
+                <td>{{i.date|date:"Y-m-d D"}}</td>
+                <td><span class="label label-info">출근</span>&nbsp;{{i.date}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+  <script>
+      function subfrm(){
+            $("#frm").submit();
+      }
+  </script>
+
+
+{% endblock %}
