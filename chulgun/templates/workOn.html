@@ -15,7 +15,7 @@
 
 {% if user.is_authenticated %}
     <center>
-    {% if user.username == 'ggangpark' or user.username == 'minah' %}
+    {% if user.username == 'ggangpark' or user.username == 'fishcake' %}
         {%if isTodayOnWork == 0%}
         <form method="POST" action="{% url 'oncreate' %}" id="frm">
             {% csrf_token %}
